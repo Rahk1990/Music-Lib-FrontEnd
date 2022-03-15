@@ -8,7 +8,7 @@ function App() {
 
   // const [entries, setEntries] = useState([{artist: 'Big Boi', album:'Ridin', title: 'Still Tippin', genre: 'hiphop', release_date: '2002-01-01' }])
   const [entries, setEntries] = useState([{artist: '', album:'', title: '', genre: '', release_date: ''}]);
-  const [newEntry, setNewEntry] = useState 
+  // const [newEntry, setNewEntry] = useState 
   // function createSong(entry){
   // let song = {
   //   createSong(){}
@@ -28,6 +28,7 @@ function App() {
 
   async function createSong(){
     let newEntry = CreateNewSong();
+    
     let response = await axios.post('http://127.0.0.1:8000/api/songs/', newEntry);
     setEntries(response.data);
     console.log(response.data)

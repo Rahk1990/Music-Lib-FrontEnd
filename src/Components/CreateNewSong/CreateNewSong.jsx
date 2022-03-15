@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 const CreatNewSong = (props) => {
 
+    // const [entries, setEntries] = useState([{artist: '', album:'', title: '', genre: '', release_date: ''}]);
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [album, setAlbum] = useState('');
