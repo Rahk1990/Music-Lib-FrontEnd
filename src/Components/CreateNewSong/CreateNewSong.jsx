@@ -13,7 +13,7 @@ const CreatNewSong = (props) => {
         event.preventDefault();
 
         let newEntry = {
-            id: 1,
+           
             title: title,
             artist: artist,
             album: album,
@@ -26,24 +26,24 @@ const CreatNewSong = (props) => {
     return (
         <form onSubmit={handleSubmit}>
 
-            <table>
-                <div>
-                
-                    <tr>
-                        <tr><label>Title</label></tr>
-                        <input type= 'title' value={title} onChange={(event) => setTitle(event.target.value)}/>
-                        <tr><label>Artist</label></tr>
-                        <input type= 'artist' value={title} onChange={(event) => setArtist(event.target.value)}/>
-                        <tr><label>Album</label></tr>
-                        <input type= 'album' value={title} onChange={(event) => setAlbum(event.target.value)}/>
-                        <tr><label>Realease Date</label></tr>
-                        <input type= 'release_date' value={title} onChange={(event) => setReleaseDate(event.target.value)}/>
-                        <tr><label>Genre</label></tr>
-                        <input type= 'genre' value={title} onChange={(event) => setGenre(event.target.value)}/>
-                    </tr>
+            
+{/* 'id', 'title', 'artist', 'album', 'release_date', 'genre' */}
+
+    
+        <tr><label>Title</label></tr>
+        <input type= 'title' value={title} onChange={(event) => setTitle(event.target.value)}/>
+        <tr><label>Artist</label></tr>
+        <input type= 'artist' value={artist} onChange={(event) => setArtist(event.target.value)}/>
+        <tr><label>Album</label></tr>
+        <input type= 'album' value={album} onChange={(event) => setAlbum(event.target.value)}/>
+        <tr><label>Realease Date</label></tr>
+        <input type= 'release_date' value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)}/>
+        <tr><label>Genre</label></tr>
+        <input type= 'genre' value={genre} onChange={(event) => setGenre(event.target.value)}/>
+
                    
-                </div>
-            </table>
+               
+            
 
         </form>
     );
