@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import CreateNewSong from './Components/CreateNewSong/CreateNewSong'
 import axios from 'axios';
 import SongList from './Components/DisplaySongs/DisplaySongs';
+import SearchBar from './Components/SearchBar/SearchBar';
 
 
 function App() {
 
   // const [entries, setEntries] = useState([{artist: 'Big Boi', album:'Ridin', title: 'Still Tippin', genre: 'hiphop', release_date: '2002-01-01' }])
   const [entries, setEntries] = useState([{artist: '', album:'', title: '', genre: '', release_date: ''}]);
+  const [searchedEntries, setSearchEntries] = useState([{artist: '', album:'', title: '', genre: '', release_date: ''}]);
   // const [newEntry, setNewEntry] = useState 
   // function createSong(entry){
   // let song = {
@@ -23,28 +25,28 @@ function App() {
   async function getAllSongs(){
     let response = await axios.get('http://127.0.0.1:8000/api/songs/');
     setEntries(response.data);
+    setSearchEntries(response.data);
     console.log(response.data)
   }
 
-  async function createSong(){
-    let newEntry = CreateNewSong();
-    
-    let response = await axios.post('http://127.0.0.1:8000/api/songs/', newEntry);
-    setEntries(response.data);
-    console.log(response.data)
-  }
+  const songFilter = (searchedEntries) => {
+    console.log(searchedEntries)
+  };
+
   // createSong().then(
   //   CreateNewSong(newEntry)
   // )
 
   return (
     <div>
-       <div><button onClick ={() => getAllSongs()}>Submit</button></div>
-       <div><button onClick ={() => createSong()}>Add Song</button></div>
+       <div><button onClick ={() => getAllSongs()}>Refresh List</button></div>
       <div>
+          <div><SearchBar songFilter ={songFilter}/></div>
         <div>
-          <CreateNewSong parentEntries ={entries} />
+          <div>Add Song:</div>
+          <CreateNewSong getAllSongs={getAllSongs}/>
           <SongList parentEntries = {entries} />
+        
         </div>
 
         {/* <div><button onClick ={() => testSong()}>Submit</button></div> */}

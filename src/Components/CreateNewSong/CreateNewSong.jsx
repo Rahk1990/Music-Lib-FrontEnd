@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 
 
 const CreatNewSong = (props) => {
@@ -10,7 +12,7 @@ const CreatNewSong = (props) => {
     const [genre, setGenre] = useState('');
     const [releaseDate, setReleaseDate] = useState('');
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault();
 
         let newEntry = {
@@ -18,34 +20,30 @@ const CreatNewSong = (props) => {
             title: title,
             artist: artist,
             album: album,
-            releaseDate: releaseDate,
+            release_date: releaseDate,
             genre: genre, 
         }
-        props.addNewSong(newEntry)
+        await axios.post('http://127.0.0.1:8000/api/songs/', newEntry)
+        
+        props.getAllSongs();
     }
 
     return (
         <form onSubmit={handleSubmit}>
 
-            
-{/* 'id', 'title', 'artist', 'album', 'release_date', 'genre' */}
-
     
-        <tr><label>Title</label></tr>
-        <input type= 'title' value={title} onChange={(event) => setTitle(event.target.value)}/>
-        <tr><label>Artist</label></tr>
-        <input type= 'artist' value={artist} onChange={(event) => setArtist(event.target.value)}/>
-        <tr><label>Album</label></tr>
-        <input type= 'album' value={album} onChange={(event) => setAlbum(event.target.value)}/>
-        <tr><label>Realease Date</label></tr>
-        <input type= 'release_date' value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)}/>
-        <tr><label>Genre</label></tr>
-        <input type= 'genre' value={genre} onChange={(event) => setGenre(event.target.value)}/>
-
-                   
-               
-            
-
+            <tr><label>Title</label></tr>
+            <input type= 'text' value={title} onChange={(event) => setTitle(event.target.value)}/>
+            <tr><label>Artist</label></tr>
+            <input type= 'text' value={artist} onChange={(event) => setArtist(event.target.value)}/>
+            <tr><label>Album</label></tr>
+            <input type= 'text' value={album} onChange={(event) => setAlbum(event.target.value)}/>
+            <tr><label>Release Date</label></tr>
+            <input type= 'date' value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)}/>
+            <tr><label>Genre</label></tr>
+            <input type= 'text' value={genre} onChange={(event) => setGenre(event.target.value)}/>
+            <button type='submit'>Post song</button>
+  
         </form>
     );
 }
