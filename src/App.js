@@ -3,7 +3,7 @@ import CreateNewSong from './Components/CreateNewSong/CreateNewSong'
 import axios from 'axios';
 import SongList from './Components/DisplaySongs/DisplaySongs';
 import SearchBar from './Components/SearchBar/SearchBar';
-
+import './App.css'
 
 function App() {
 
@@ -31,6 +31,15 @@ function App() {
 
   const songFilter = (searchedEntries) => {
     console.log(searchedEntries)
+    let songMatch = entries.filter((song) => {
+      if(song.name.toLowerCase().includes(searchedEntries.toLowerCase())){
+        return true
+        
+      }
+      else return false
+    }
+    )
+    console.log(songMatch)
   };
 
   // createSong().then(
@@ -38,15 +47,18 @@ function App() {
   // )
 
   return (
-    <div>
+    <div className='page-background' >
        <div><button onClick ={() => getAllSongs()}>Refresh List</button></div>
       <div>
-          <div><SearchBar songFilter ={songFilter}/></div>
+          <div className='entry-border-box'><SearchBar songFilter ={songFilter}/></div>
         <div>
-          <div>Add Song:</div>
-          <CreateNewSong getAllSongs={getAllSongs}/>
-          <SongList parentEntries = {entries} />
-        
+          <div className='border-box'>Add Song:
+            
+              <CreateNewSong getAllSongs={getAllSongs}/>
+            </div>
+          <div className='border-box'>
+            <SongList  parentEntries = {entries} />
+          </div>
         </div>
 
         {/* <div><button onClick ={() => testSong()}>Submit</button></div> */}
