@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const CreatNewSong = (props) => {
 
-    // const [entries, setEntries] = useState([{artist: '', album:'', title: '', genre: '', release_date: ''}]);
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [album, setAlbum] = useState('');
@@ -23,8 +22,9 @@ const CreatNewSong = (props) => {
             release_date: releaseDate,
             genre: genre, 
         }
-        await axios.post('http://127.0.0.1:8000/api/songs/', newEntry)
+        let response = await axios.post('http://127.0.0.1:8000/api/songs/', newEntry)
         props.getAllSongs();
+        console.log(response.data)
     }
 
     return (
