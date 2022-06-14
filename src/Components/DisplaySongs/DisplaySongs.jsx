@@ -8,8 +8,8 @@ const SongList = (props) => {
     <div>
         <thead>
             <tr>
-                <th>Song Num</th>
-                <th>Title</th>
+                <th>Song Number</th>
+                <th>Titles</th>
                 <th>Artist</th>
                 <th>Album</th>
                 <th>Realease Date</th>
