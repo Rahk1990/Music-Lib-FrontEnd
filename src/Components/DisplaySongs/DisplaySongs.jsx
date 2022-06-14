@@ -12,7 +12,7 @@ const SongList = (props) => {
                 <th>Titles</th>
                 <th>Artist</th>
                 <th>Album</th>
-                <th>Realease Date</th>
+                <th>Realease Dates</th>
                 <th>Genre</th>
             </tr>
         </thead>
